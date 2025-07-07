@@ -3,11 +3,18 @@ import { StyleSheet, View } from 'react-native';
 import LogButton from '../log-button';
 import PhotoButton from '../photo-button';
 
-const Buttons = () => {
+
+type ButtonsProps = {
+  onPressLitterScan: () => void;
+  onPressLog: () => void;
+  onPressSettings: () => void;
+};
+
+const Buttons = ({ onPressLitterScan, onPressLog, onPressSettings }: ButtonsProps) => {
     return (
         <View style={styles.buttonsContainer}>
-            <PhotoButton onPress={() => console.log('Photo button pressed')} />
-            <LogButton onPress={() => console.log('Log button pressed')}  />
+            <PhotoButton onPress={onPressLitterScan} />
+            <LogButton onPress={onPressLog}  />
         </View>
     )
 };

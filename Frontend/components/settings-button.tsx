@@ -4,46 +4,55 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const SettingsButton = ({ onPress }: { onPress: () => void }) => {
-    const [fontsLoaded, setFontsLoaded] = useState(false);
+  const [fontsLoaded, setFontsLoaded] = useState(false);
 
-        useEffect(() => {
-            Font.loadAsync({
-            FredokaOne: require('../assets/fonts/FredokaOne.ttf'),
-            }).then(() => setFontsLoaded(true));
-        }, []);
+  useEffect(() => {
+    Font.loadAsync({
+      FredokaOne: require('../assets/fonts/FredokaOne.ttf'),
+    }).then(() => setFontsLoaded(true));
+  }, []);
 
-        if (!fontsLoaded) {
-            return null; // or a loading placeholder
-        }
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
-    <View style={styles.button}>
-        <TouchableOpacity style={styles.button} onPress={onPress}>
-        <FontAwesome name="cog" size={72} color="#1B4332" />
-        <Text style={styles.text}>Settings</Text>
-        </TouchableOpacity>
-    </View>
+    <TouchableOpacity style={styles.button} onPress={onPress}>
+      <Text style={styles.text}>Centralized Learning Settings:</Text>
+      <View style={styles.iconRow}>
+        <FontAwesome name="mobile" size={72} color="#1B4332" />
+        <FontAwesome name="arrow-right" size={42} color="#1B4332" />
+        <FontAwesome name="image" size={52} color="#1B4332" />
+        <FontAwesome name="arrow-right" size={42} color="#1B4332" />
+        <FontAwesome name="server" size={52} color="#1B4332" />
+        {/* Add more icons here if needed */}
+      </View>
+    </TouchableOpacity>
   );
-}
+};
 
 const styles = StyleSheet.create({
   button: {
     backgroundColor: '#B7E4C7',
     borderRadius: 20,
-    padding: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 16,
     width: '95%',
     height: 167,
-
-    marginVertical: 10,
+    marginVertical: 20,
+    justifyContent: 'flex-start',
   },
   text: {
-    fontSize: 25,
+    fontSize: 20,
     color: '#1B4332',
-    marginTop: 8,
     fontFamily: 'FredokaOne',
-
+    marginBottom: 12,
+  },
+  iconRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    flex: 1,
+    width: '100%',
   },
 });
 
